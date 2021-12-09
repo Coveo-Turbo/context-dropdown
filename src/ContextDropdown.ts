@@ -33,9 +33,6 @@ export class ContextDropdown extends Component {
     constructor(public element: HTMLElement, public options: IContextDropdownOptions, public bindings: IComponentBindings) {
         super(element, ContextDropdown.ID, bindings);
         this.options = ComponentOptions.initComponentOptions(element, ContextDropdown, options);
-        if (!Array.isArray(this.options.values)) {
-            this.options.values = Object.values(this.options.values) as IOption[] | IGroupedOption[];
-        }
 
         this.bind.onRootElement(Coveo.QueryEvents.doneBuildingQuery, (args: Coveo.IDoneBuildingQueryEventArgs) => this.handleDoneBuildingQuery(args));
 
